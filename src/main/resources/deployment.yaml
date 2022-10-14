@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tpg-demo-application
+spec:
+  selector:
+    matchLabels:
+      app: tpg-demo-application
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: tpg-demo-application
+    spec:
+      containers:
+        - name: tpg-demo-application
+          image: tpg-demo-application:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
