@@ -5,12 +5,14 @@ import com.tpg.tpgapplication.model.Employee;
 import com.tpg.tpgapplication.service.impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 //@CrossOrigin("*")
+@RefreshScope
 @RestController
 @RequestMapping(URI.API + URI.VERSION)
 public class EmployeeController {
