@@ -1,20 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tpg-demo-application
+  name: employee-service
+  namespace: tpg
+  labels:
+    app: employee-service
+    group: general
+    version: v1
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: tpg-demo-application
-  replicas: 2
+      app: employee-service
   template:
     metadata:
       labels:
-        app: tpg-demo-application
+        app: employee-service
+        group: general
+        version: v1
     spec:
       containers:
-        - name: tpg-demo-application
-          image: tpg-demo-application:latest
+        - name: employee-service
+          image: employee-service:latest
           imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
+      terminationGracePeriodSeconds: 60
